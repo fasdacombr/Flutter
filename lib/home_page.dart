@@ -1,10 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:ola_flavio/app_controller.dart';
 
 class HomePage extends StatefulWidget {
-  
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -23,10 +22,18 @@ class HomePageState extends State<HomePage> {
         ),
         actions: [
           CustomSwitch(),
-        ],        
+        ],
       ),
-      body: Center(
-        child: CustomSwitch(),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Contador: $counter'),
+            CustomSwitch(),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
