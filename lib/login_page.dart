@@ -27,6 +27,14 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
+                Container(
+                  width: 200,
+                  height: 200,
+                  child: Image.network(
+                    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo_TV_2015.png/250px-Logo_TV_2015.png',
+                  ),
+                ),
+                Container(height: 20),
                 TextField(
                   onChanged: (text) {
                     email = text;
@@ -51,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: () {
-                    if (email == 'flavio@fasda.com.br' &&        password == '321') {
+                    if (email == 'flavio@fasda.com.br' && password == '321') {
                       Navigator.of(context).pushReplacementNamed('/home');
                     } else {
                       print('Login inválido!');
