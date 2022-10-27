@@ -35,37 +35,56 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Container(height: 20),
-                  TextField(
-                    onChanged: (text) {
-                      email = text;
-                    },
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      border: OutlineInputBorder(),
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 12, right: 12, top: 20, bottom: 12),
+                      child: Column(
+                        children: [
+                          TextField(
+                            onChanged: (text) {
+                              email = text;
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          TextField(
+                            onChanged: (text) {
+                              password = text;
+                            },
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          SizedBox(height: 15),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.green),
+                            onPressed: () {
+                              if (email == 'flavio@fasda.com.br' &&
+                                  password == '321') {
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/home');
+                              } else {
+                                print('Login inválido!');
+                              }
+                            },
+                            child: Container(
+                                width: double.infinity,
+                                child: Text(
+                                  'Entrar',
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    onChanged: (text) {
-                      password = text;
-                    },
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  SizedBox(height: 15),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (email == 'flavio@fasda.com.br' && password == '321') {
-                        Navigator.of(context).pushReplacementNamed('/home');
-                      } else {
-                        print('Login inválido!');
-                      }
-                    },
-                    child: Text('Entrar'),
                   ),
                 ],
               ),
@@ -82,8 +101,11 @@ class _LoginPageState extends State<LoginPage> {
         body: Stack(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: Image.asset('assets/images/background_1.jpg', fit: BoxFit.cover,)),
+            height: MediaQuery.of(context).size.height,
+            child: Image.asset(
+              'assets/images/background_1.jpg',
+              fit: BoxFit.cover,
+            )),
         Container(
           color: Colors.white.withOpacity(0.2),
         ),
