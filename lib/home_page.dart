@@ -20,7 +20,9 @@ class HomePageState extends State<HomePage> {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              currentAccountPicture: Image.asset('assets/images/flavio.png'),
+              currentAccountPicture: ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: Image.asset('assets/images/flavio.png')),
               accountName: Text('Flávio Almeida'),
               accountEmail: Text('flavio@fasda.com.br'),
             ),
