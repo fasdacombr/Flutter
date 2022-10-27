@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
           height: MediaQuery.of(context).size.height,
           child: Image.asset('assets/images/background_1.jpg', fit: BoxFit.cover,)),
         Container(
-          color: Colors.black.withOpacity(0.3),
+          color: Colors.white.withOpacity(0.2),
         ),
         _body(),
       ],
