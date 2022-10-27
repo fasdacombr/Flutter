@@ -1,0 +1,1 @@
+# Estes projetos fazem parte da playlist [Curso Completo de Flutter](https://www.youtube.com/playlist?list=PLlBnICoI-g-d-J57QIz6Tx5xtUDGQdBFB) dado pelo Jacob Moura da comunidade Fluterando
