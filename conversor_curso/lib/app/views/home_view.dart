@@ -20,31 +20,61 @@ class HomeView extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                         flex: 1,
-                        child: DropdownButton(
-                          items: const [
-                            DropdownMenuItem(
-                              child: Text('Real'),
+                        child: SizedBox(
+                          height: 57,
+                          child: DropdownButton(
+                            isExpanded: true,
+                            underline: Container(
+                              height: 1,
+                              color: Colors.amber,
                             ),
-                          ],
-                          onChanged: (value) {},
+                            value: 0,
+                            items: const [
+                              DropdownMenuItem(
+                                value: 0,
+                                child: Text('Real'),
+                              ),
+                              DropdownMenuItem(
+                                child: Text('Dolar'),
+                              ),
+                              DropdownMenuItem(
+                                child: Text('Euro'),
+                              ),
+                              DropdownMenuItem(
+                                child: Text('Bitcoin'),
+                              ),
+                            ],
+                            onChanged: (value) {},
+                          ),
                         )),
-                    SizedBox(width: 10),
-                    Expanded(
+                    const SizedBox(width: 10),
+                    const Expanded(
                       flex: 2,
                       child: TextField(
-                        decoration: InputDecoration(),
+                        decoration: InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.amber),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.amber),
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.amber,
+                ),
                 onPressed: () {},
-                child: Text('CONVERTER'),
+                child: const Text('CONVERTER'),
               )
             ],
           ),
