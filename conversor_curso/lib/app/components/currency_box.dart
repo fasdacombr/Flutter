@@ -11,13 +11,13 @@ class CurrencyBox extends StatelessWidget {
           child: SizedBox(
             height: 57,
             child: DropdownButton(
+              value: 0,
               iconEnabledColor: Colors.amber,
               isExpanded: true,
               underline: Container(
                 height: 1,
                 color: Colors.amber,
               ),
-              value: 0,
               items: const [
                 DropdownMenuItem(
                   value: 0,
