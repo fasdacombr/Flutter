@@ -1,16 +1,18 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_const_constructors
 import 'package:flutter/material.dart';
 
 import 'package:conversor_curso/app/models/currency_model.dart';
 
 class CurrencyBox extends StatelessWidget {
-  final List<CurrencyModel> itens;
+  final List<CurrencyModel>? items;
+  final CurrencyModel? selectedItem;
   final TextEditingController controller;
-  final void Function(CurrencyModel model) onChanged;
+  final void Function(CurrencyModel? model) onChanged;
 
   const CurrencyBox({
     Key? key,
-    required this.itens,
+    required this.items,
+    required this.selectedItem,
     required this.controller,
     required this.onChanged,
   }) : super(key: key);
@@ -27,19 +29,20 @@ class CurrencyBox extends StatelessWidget {
             child: DropdownButton<CurrencyModel>(
               iconEnabledColor: Colors.amber,
               isExpanded: true,
+              value: selectedItem,
               underline: Container(
                 height: 1,
                 color: Colors.amber,
               ),
-              items: itens
-                  .map((e) => DropdownMenuItem<CurrencyModel>(value: e, child: Text(e.name)))
+              items: items
+                  ?.map((e) => DropdownMenuItem(value: e, child: Text(e.name)))
                   .toList(),
-              onChanged: (value) {},
+              onChanged: onChanged,
             ),
           ),
         ),
         const SizedBox(width: 10),
-        const Expanded(
+        Expanded(
           flex: 2,
           child: TextField(
             controller: controller,

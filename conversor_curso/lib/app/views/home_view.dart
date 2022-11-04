@@ -3,13 +3,20 @@ import 'package:flutter/material.dart';
 
 import '../components/currency_box.dart';
 
-class HomeView extends StatelessWidget {
-  final TextEditingController toText = TextEditingController();
-  final TextEditingController fromText = TextEditingController();
+class HomeView extends StatefulWidget {
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
 
+class _HomeViewState extends State<HomeView> {
+  final TextEditingController toText = TextEditingController();
+
+  final TextEditingController fromText = TextEditingController();
   HomeController? homeController;
 
-  HomeView() {
+  @override
+  void initState() {
+    super.initState();
     homeController = HomeController(toText: toText, fromText: fromText);
   }
 
@@ -31,15 +38,35 @@ class HomeView extends StatelessWidget {
                   height: 150,
                 ),
                 SizedBox(height: 50),
-                CurrencyBox(),
+                CurrencyBox(
+                  selectedItem: homeController?.toCurrency,
+                  controller: toText,
+                  items: homeController?.currencies,
+                  onChanged: (model) {
+                    setState(() {
+                      homeController?.toCurrency = model;
+                    });
+                  },
+                ),
                 SizedBox(height: 10),
-                CurrencyBox(),
+                CurrencyBox(
+                  selectedItem: homeController?.fromCurrency,
+                  controller: fromText,
+                  items: homeController?.currencies,
+                  onChanged: (model) {
+                    setState(() {
+                      homeController?.fromCurrency = model;
+                    });
+                  },
+                ),
                 const SizedBox(height: 50),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    homeController?.convert();
+                  },
                   child: const Text('CONVERTER'),
                 )
               ],

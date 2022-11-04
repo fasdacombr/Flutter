@@ -1,5 +1,7 @@
-import 'package:conversor_curso/app/models/currency_model.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
+
+import 'package:conversor_curso/app/models/currency_model.dart';
 
 class HomeController {
   List<CurrencyModel>? currencies;
@@ -10,7 +12,13 @@ class HomeController {
   CurrencyModel? toCurrency;
   CurrencyModel? fromCurrency;
 
-  HomeController({required this.toText, required this.fromText}) {
+  HomeController({
+    this.currencies,
+    required this.toText,
+    required this.fromText,
+    this.toCurrency,
+    this.fromCurrency,
+  }) {
     currencies = CurrencyModel.getCurrencies();
     toCurrency = currencies![0];
     fromCurrency = currencies![1];
