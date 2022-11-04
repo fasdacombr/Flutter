@@ -1,8 +1,18 @@
+import 'package:conversor_curso/app/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../components/currency_box.dart';
 
 class HomeView extends StatelessWidget {
+  final TextEditingController toText = TextEditingController();
+  final TextEditingController fromText = TextEditingController();
+
+  HomeController? homeController;
+
+  HomeView() {
+    homeController = HomeController(toText: toText, fromText: fromText);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
