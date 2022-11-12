@@ -1,8 +1,15 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 import 'package:todo_list/src/repositories/todo_repository.dart';
 
+class DioMock extends Mock implements Dio {
+
+}
+
 main() {
-  final repository = TodoRepository();
+  final dio = DioMock();
+  final repository = TodoRepository(client: dio);
 
   test("Deve trazer uma lista de TodoModel", () async {
      final list = await repository.fetchTodos();
