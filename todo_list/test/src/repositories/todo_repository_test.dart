@@ -1,26 +1,20 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:todo_list/src/repositories/todo_repository.dart';
+import 'package:mocktail/mocktail.dart';
 
 class DioMock extends Mock implements Dio {}
 
-@GenerateMocks([Dio])
-void main() {
+main() {
   final dio = DioMock();
-  final repository = TodoRepository(client: dio);
+  final repository = TodoRepository(dio);
 
   test("Deve trazer uma lista de TodoModel", () async {
-    when(dio.get(jsonData)).thenAnswer(
-      (inv) async => Future.value(Response(
-        statusCode: 200,
-        data: jsonDecode(jsonData),
-        requestOptions: RequestOptions(path: jsonData),
-      )),
-    );
+    when(() => dio.get(any())).thenAnswer((_) async => Response(
+          data: jsonDecode(jsonData),
+          requestOptions: RequestOptions(path: '/'),
+        ));
 
     final list = await repository.fetchTodos();
     expect(list[4].title,
