@@ -1,10 +1,10 @@
 class TodoModel {
   int? userId;
   int? id;
-  String? title;
+  String title = '';
   bool? completed;
 
-  TodoModel({this.userId, this.id, this.title, this.completed});
+  TodoModel({this.userId, this.id, required this.title, this.completed});
 
   TodoModel.fromJson(Map<String, dynamic> json) {
     userId = json['userId'];
