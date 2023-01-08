@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:ola_flavio/home_page.dart';
+import 'package:ola_flavio/login.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -68,9 +68,8 @@ class _LoginPageState extends State<LoginPage> {
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.green),
-                              onPressed: () {
-                                if (email == 'flavio@fasda.com.br' &&
-                                    password == '321') {
+                              onPressed: () async {
+                                if (await login(email, password) == true){
                                   Navigator.of(context)
                                       .pushReplacementNamed('/home');
                                 } else {
