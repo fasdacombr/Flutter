@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:ola_flavio/app_controller.dart';
+import 'package:ola_flavio/controllers/app_controller.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,8 +21,8 @@ class HomePageState extends State<HomePage> {
           children: [
             UserAccountsDrawerHeader(
               currentAccountPicture: ClipRRect(
-                borderRadius: BorderRadius.circular(40),
-                child: Image.asset('assets/images/flavio.png')),
+                  borderRadius: BorderRadius.circular(40),
+                  child: Image.asset('assets/images/flavio.png')),
               accountName: Text('Flávio Almeida'),
               accountEmail: Text('flavio@fasda.com.br'),
             ),
